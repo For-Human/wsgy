@@ -26,7 +26,7 @@ class Server(object):
         while True:
             self.client_socket, self.client_address = self.socket.accept()
             self.request = self.client_socket.recv(1024)
-            datas = self.application(self.environ, self.start_response)
+            body = self.application(self.environ, self.start_response)
             
             print '[{time}] {host}:{port}'.format(
                 time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
@@ -40,7 +40,7 @@ class Server(object):
                 for header in headers:
                     response += '{0}: {1}\r\n'.format(*header)
                 response += '\r\n'
-                for data in datas:
+                for data in body:
                     response += data
                 self.client_socket.sendall(response)
             finally:
