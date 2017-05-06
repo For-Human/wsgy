@@ -1,6 +1,6 @@
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 class Request(object):
     
     def __init__(self, environ):
-        pass
+        self.environ = environ
