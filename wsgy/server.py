@@ -1,12 +1,6 @@
 # -*- coding: utf-8 -*-
 
 class Server(object):
-    """Server is a wsgi server class.
-    
-    :param host: host
-    :param port: port
-    :param app: wsgi application
-    """
     
     def __init__(self, host, port, app):
         import socket
