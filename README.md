@@ -21,8 +21,6 @@ if __name__ == '__main__':
 - [example1](https://github.com/For-Human/wsgy/blob/master/example/example1/test.py)
 - [example2](https://github.com/For-Human/wsgy/blob/master/example/example2/test.py)
 
-## API
-
 ## TODO
 
 - support python3
