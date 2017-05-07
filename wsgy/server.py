@@ -5,10 +5,10 @@ class Server(object):
     
     :param host: host
     :param port: port
-    :param application: wsgi application
+    :param app: wsgi application
     """
     
-    def __init__(self, host, port, application):
+    def __init__(self, host, port, app):
         import socket
         
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -18,7 +18,7 @@ class Server(object):
         
         self.host = host
         self.port = port
-        self.application = application
+        self.app = app
         
     def serve_forever(self):
         import datetime
@@ -26,7 +26,7 @@ class Server(object):
         while True:
             self.client_socket, self.client_address = self.socket.accept()
             self.request = self.client_socket.recv(1024)
-            body = self.application(self.environ, self.start_response)
+            body = self.app(self.environ, self.start_response)
             
             print '[{time}] {host}:{port}'.format(
                 time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),

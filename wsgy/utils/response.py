@@ -1,11 +1,12 @@
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 class Response(object):
     
-    def __init__(self, body, code=202):
+    def __init__(self, body, code=202, headers=[('Content-Type', 'text/html')]):
         self.body = body
         self.code = code
-    
+        self.headers = headers
+        
     @property
     def status(self):
         response = {
@@ -65,8 +66,4 @@ class Response(object):
             510: 'Not Extended',
         }
         
-        return '{code} {response}'.format(code=code, response=response[code])
-    
-    @property
-    def headers(self):
-        return [('Content-Type', 'text/html')]
+        return '{code} {response}'.format(code=self.code, response=response[self.code])
