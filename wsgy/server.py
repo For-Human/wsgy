@@ -65,7 +65,7 @@ class Server(object):
             tmp    = request_lines[0].split()
             method = tmp[0]
             parse  = urlparse.urlparse(tmp[1])
-            path   = parse.query
+            path   = parse.path
             query  = parse.query
             
             if '.' in path:
