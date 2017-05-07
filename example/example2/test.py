@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from wsgy import Server, App, request, render_template
+from wsgy import Server, App, render_template
 
 app = App(__name__)
 
