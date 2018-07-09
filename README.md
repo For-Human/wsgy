@@ -5,7 +5,6 @@ wsgy is a microframework for wsgi, and it has many features such as
 - wsgy has a small wsgi server
 - wsgy has a top-to-bottom wsgi application design 
 - wsgy is inspired by [flask](https://github.com/pallets/flask) and [awesome-python-webapp](https://github.com/michaelliao/awesome-python-webapp)
-- wsgy supports `pip install wsgy` 
 
 ## Hello World
 
@@ -27,7 +26,3 @@ if __name__ == '__main__':
 
 - [example1](https://github.com/For-Human/wsgy/blob/master/example/example1/test.py)
 - [example2](https://github.com/For-Human/wsgy/blob/master/example/example2/test.py)
-
-## TODO
-
-- support python3
