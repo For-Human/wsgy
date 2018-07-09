@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from collections import defaultdict
 
 class Request(object):
     
@@ -15,7 +16,6 @@ class Request(object):
     
     @property
     def query(self):
-        from collections import defaultdict
         query = defaultdict(list)
         if self.environ['QUERY_STRING']:
             for q in self.environ['QUERY_STRING'].split('&'):
@@ -37,7 +37,6 @@ class Request(object):
     
     @property
     def form(self):
-        from collections import defaultdict
         form = defaultdict(list)
         if self.body:
             for d in self.body.split('&'):

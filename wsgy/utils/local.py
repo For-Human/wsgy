@@ -4,10 +4,11 @@ import threading
 class CTX(threading.local):
     pass
 
-class Proxy(object):
-    
+class RequestProxy(object):
+
     def __init__(self, ctx):
         self.ctx = ctx
-        
-    def __getattr__(self, key):
-        return self.ctx.request.__getattribute__(key)
+
+    def __getattribute__(self, key):
+        ctx = super(RequestProxy, self).__getattribute__("ctx")
+        return ctx.request.__getattribute__(key)

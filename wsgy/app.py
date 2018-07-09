@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
-from .utils import Request, Response, CTX, Proxy, Template
+import re
+import os
+import mimetypes
+from .utils import Request, Response, CTX, RequestProxy, Template
 
 ctx = CTX()
-request = Proxy(ctx)
+request = RequestProxy(ctx)
 
 def static(name):
-    import os
-    import mimetypes
     file_path = os.path.join(os.getcwd(), 'static', name)
     file_suffix = os.path.splitext(name)[1]
     with open(file_path, 'rb') as f:
@@ -14,14 +15,15 @@ def static(name):
     content_type = mimetypes.types_map.get(file_suffix.lower(), '')
     return body, 202, [('Content-Type', content_type)]
 
+
 def render_template(name, **kwargs):
-    import os
     file_path = os.path.join(os.getcwd(), 'templates', name)
     with open(file_path, 'rb') as f:
         body = f.read()
     body = Template(body).render(**kwargs)
     return body, 202, [('Content-Type', 'text/html')]
-    
+
+
 class App(object):
     
     def __init__(self, name):
@@ -59,8 +61,6 @@ class App(object):
         return wrapper
     
     def __call__(self, environ, start_response):
-        import re
-        
         r = None
         ctx.request = Request(environ)
         for method, rule, func in self.routes:

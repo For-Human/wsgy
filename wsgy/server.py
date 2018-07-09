@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
+import os
+import sys
+import StringIO
+import urlparse
+import datetime
+import socket
 
 class Server(object):
     
     def __init__(self, host, port, app):
-        import socket
-        
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.socket.bind((host, port))
@@ -15,8 +19,6 @@ class Server(object):
         self.app = app
         
     def serve_forever(self):
-        import datetime
-        
         while True:
             self.client_socket, self.client_address = self.socket.accept()
             self.request = self.client_socket.recv(1024)
@@ -42,11 +44,6 @@ class Server(object):
 
     @property
     def environ(self):
-        import os
-        import sys
-        import StringIO
-        import urlparse
-        
         request_lines = self.request.splitlines()
         method   = ''
         script   = ''
