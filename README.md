@@ -1,10 +1,10 @@
 # wsgy
 
-wsgy is a microframework for wsgi, and it has many features such as
+`wsgy` is a microframework for wsgi, and it has many features such as
 
-- wsgy has a small wsgi server
-- wsgy has a top-to-bottom wsgi application design 
-- wsgy is inspired by [flask](https://github.com/pallets/flask) and [awesome-python-webapp](https://github.com/michaelliao/awesome-python-webapp)
+- `wsgy` has a small wsgi server
+- `wsgy` has a top-to-bottom wsgi application design 
+- `wsgy` is inspired by [flask](https://github.com/pallets/flask) and [awesome-python-webapp](https://github.com/michaelliao/awesome-python-webapp)
 
 ## hello world
 
